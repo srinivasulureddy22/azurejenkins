@@ -17,13 +17,15 @@ pipeline {
             }
         }
         
-        stage ("Build Image") {
-            steps {
-                script {
-                    docker.build registry
-                }
-            }
-        }
+   // Building Docker images
+        stage('Building image') {
+         steps{
+          script {
+           dockerImage = docker.build registry 
+           dockerImage.tag("$BUILD_NUMBER")
+          }
+         }
+      }
         
 #        stage ("Push to ECR") {
 #            steps {
