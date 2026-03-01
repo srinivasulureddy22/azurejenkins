@@ -37,6 +37,11 @@ pipeline {
                 }
             }
         }
+    stage('k8s deployment') {
+        steps {
+            sh 'kubectl apply -f k8s-deploy.yml'
+        }
+    }  
         
    //     stage ("Helm package") {
    //         steps {
