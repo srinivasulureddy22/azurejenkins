@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        registry = "119741951591.dkr.ecr.us-east-1.amazonaws.com/jenkins-ecr"
+        registry = "119741951591.dkr.ecr.ap-south-1.amazonaws.com/jenkins-ecr"
 
     }
     stages {
@@ -39,8 +39,8 @@ pipeline {
       stage ("Push to ECR") {
           steps {
                 script {
-                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 119741951591.dkr.ecr.us-east-1.amazonaws.com"
-                    sh "docker push 119741951591.dkr.ecr.us-east-1.amazonaws.com/jenkins-ecr:latest"
+                    sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 119741951591.dkr.ecr.ap-south-1.amazonaws.com"
+                    sh "docker push 119741951591.dkr.ecr.ap-south-1.amazonaws.com/jenkins-ecr:latest"
                     
                 }
             }
