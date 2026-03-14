@@ -17,6 +17,14 @@ pipeline {
                 sh "mvn clean install"
             }
         }
+        stage("build & SonarQube Scanner") {
+            steps {
+              withSonarQubeEnv('sonar-server') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+        }         
+        
         
     // Building Docker images
         stage('Building image') {
