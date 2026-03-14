@@ -35,6 +35,11 @@ pipeline {
           }
          }
       }
+     stage('Trivy Scan') {
+       steps {
+          sh 'trivy image 119741951591.dkr.ecr.us-east-1.amazonaws.com/jenkins-ecr:latest'
+       }
+     }   
         
       stage ("Push to ECR") {
           steps {
