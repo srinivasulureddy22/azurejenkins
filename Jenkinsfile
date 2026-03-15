@@ -67,7 +67,7 @@ pipeline {
                     if (params.ENVIRONMENT == "dev") {
                         sh """
                         aws eks update-kubeconfig --region ${AWS_REGION} --name ${DEV_CLUSTER}
-                        kubectl apply -f k8s/dev-deploy.yaml
+                        kubectl apply -f eks-deploy.yaml
                         """
                     }
 
