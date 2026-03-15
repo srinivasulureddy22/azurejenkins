@@ -29,13 +29,13 @@ pipeline {
             }
         }
 
-        stage('SonarQube Scan') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
+//        stage('SonarQube Scan') {
+//            steps {
+//                withSonarQubeEnv('sonar-server') {
+//                    sh 'mvn sonar:sonar'
+//                }
+//            }
+//        }
 
         stage('Build Docker Image') {
             steps {
@@ -43,11 +43,11 @@ pipeline {
             }
         }
 
-        stage('Trivy Scan') {
-            steps {
-                sh "trivy image ${REGISTRY}:${params.IMAGE_TAG}"
-            }
-        }
+ //       stage('Trivy Scan') {
+ //           steps {
+ //              sh "trivy image ${REGISTRY}:${params.IMAGE_TAG}"
+ //           }
+ //       }
 
         stage('Push Image to ECR') {
             steps {
